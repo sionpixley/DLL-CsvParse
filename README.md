@@ -1,2 +1,2 @@
-# NuGet-CsvParse
-NuGet package that can be used to parse .csv files and return the data.
+# DLL-CsvParse
+DLL that can be used to parse .csv files and return the data.
