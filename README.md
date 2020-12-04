@@ -18,7 +18,7 @@ IEnumerable\<IEnumerable\<string\>\> data = Csv.GetData("filepath.csv");
 
 ### How to grab just the data from your .csv file (if there are no headers):
 IEnumberable\<IEnumberable\<string\>\> data = Csv.GetData("filepath.csv", false);
-// OR
+<br/>// OR<br/>
 IEnumberable\<IEnumberable\<string\>\> data = Csv.Parse("filepath.csv");
 
 ### How to grab all the data, headers included:
