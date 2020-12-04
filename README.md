@@ -11,18 +11,18 @@
 7. Make sure to add "using Sion.CsvParse;" to the top of your .cs or .vb files.
 
 ### How to grab just the headers from your .csv file:
-IEnumberable<string> headers = Csv.GetHeaders("filepath.csv");
+IEnumberable\<string\> headers = Csv.GetHeaders("filepath.csv");
 
 ### How to grab just the data from your .csv file (if there are headers):
-IEnumerable<IEnumerable<string>> data = Csv.GetData("filepath.csv");
+IEnumerable\<IEnumerable\<string\>\> data = Csv.GetData("filepath.csv");
 
 ### How to grab just the data from your .csv file (if there are no headers):
-IEnumberable<IEnumberable<string>> data = Csv.GetData("filepath.csv", false);
+IEnumberable\<IEnumberable\<string\>\> data = Csv.GetData("filepath.csv", false);
 // OR
-IEnumberable<IEnumberable<string>> data = Csv.Parse("filepath.csv");
+IEnumberable\<IEnumberable\<string\>\> data = Csv.Parse("filepath.csv");
 
 ### How to grab all the data, headers included:
-IEnumberable<IEnumberable<string>> data = Csv.Parse("filepath.csv");
+IEnumberable\<IEnumberable\<string\>\> data = Csv.Parse("filepath.csv");
 
 ## What if I use a character other than ',' to delimit my .csv files?
 All the methods are overloaded to accept an optional char delimiter! If not provided, ',' is the assumed character.
