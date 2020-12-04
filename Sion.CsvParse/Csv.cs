@@ -40,11 +40,11 @@ namespace Sion.CsvParse {
         }
 
         public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path) {
-            return await Parse(path);
+            return (await Parse(path)).Skip(1);
         }
 
         public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, char delimiter) {
-            return await Parse(path, delimiter);
+            return (await Parse(path, delimiter)).Skip(1);
         }
 
         public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, bool hasHeaders) {
