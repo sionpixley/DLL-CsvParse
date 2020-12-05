@@ -5,6 +5,42 @@ using System.Threading.Tasks;
 
 namespace Sion.CsvParse {
     public static class Csv {
+        public static async Task FillEmptyValues(string path, string value) {
+            IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
+            List<string> newLines = new List<string>();
+
+            foreach(var line in lines) {
+                if(line.Contains(",,")) {
+                    int index = line.IndexOf(",,");
+                    string newLine = $"{line[0..(index + 1)]}{value}{line[(index + 1)..]}";
+                    newLines.Add(newLine);
+                }
+                else {
+                    newLines.Add(line);
+                }
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
+        }
+
+        public static async Task FillEmptyValues(string path, string value, char delimiter) {
+            IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
+            List<string> newLines = new List<string>();
+
+            foreach(var line in lines) {
+                if(line.Contains($"{delimiter}{delimiter}")) {
+                    int index = line.IndexOf($"{delimiter}{delimiter}");
+                    string newLine = $"{line[0..(index + 1)]}{value}{line[(index + 1)..]}";
+                    newLines.Add(newLine);
+                }
+                else {
+                    newLines.Add(line);
+                }
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
+        }
+
         public static async Task<IEnumerable<IEnumerable<string>>> Parse(string path) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<IEnumerable<string>> data = new List<IEnumerable<string>>();
