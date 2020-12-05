@@ -10,6 +10,9 @@
 6. Navigate to where you saved "Sion.CsvParse.dll" and add it.
 7. Make sure to add "using Sion.CsvParse;" to the top of your .cs or .vb files.
 
+### How to fill in empty columns:
+await Csv.FillEmptyValues("filepath.csv", "none");
+
 ### How to grab just the headers from your .csv file:
 IEnumberable\<string\> headers = await Csv.GetHeaders("filepath.csv");
 
@@ -27,6 +30,7 @@ IEnumberable\<IEnumberable\<string\>\> data = await Csv.Parse("filepath.csv");
 ## What if I use a character other than ',' to delimit my .csv files?
 All the methods are overloaded to accept an optional char delimiter! If not provided, ',' is the assumed character.
 
-<br/>Csv.Parse(string path, char delimiter);<br/>
+<br/>Csv.FillEmptyValues(string path, string value, char delimiter);<br/>
+Csv.Parse(string path, char delimiter);<br/>
 Csv.GetHeaders(string path, char delimiter);<br/>
 Csv.GetData(string path, char delimiter, bool hasHeaders);
