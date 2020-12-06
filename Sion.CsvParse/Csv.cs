@@ -11,8 +11,11 @@ namespace Sion.CsvParse {
 
             foreach(var line in lines) {
                 if(line.Contains(",,")) {
-                    int index = line.IndexOf(",,");
-                    string newLine = $"{line[0..(index + 1)]}{value}{line[(index + 1)..]}";
+                    string newLine = line;
+                    while(newLine.Contains(",,")) {
+                        int index = newLine.IndexOf(",,");
+                        newLine = $"{newLine[0..(index + 1)]}{value}{newLine[(index + 1)..]}";
+                    }
                     newLines.Add(newLine);
                 }
                 else {
@@ -29,8 +32,11 @@ namespace Sion.CsvParse {
 
             foreach(var line in lines) {
                 if(line.Contains($"{delimiter}{delimiter}")) {
-                    int index = line.IndexOf($"{delimiter}{delimiter}");
-                    string newLine = $"{line[0..(index + 1)]}{value}{line[(index + 1)..]}";
+                    string newLine = line;
+                    while(newLine.Contains($"{delimiter}{delimiter}")) {
+                        int index = newLine.IndexOf($"{delimiter}{delimiter}");
+                        newLine = $"{newLine[0..(index + 1)]}{value}{newLine[(index + 1)..]}";
+                    }
                     newLines.Add(newLine);
                 }
                 else {
