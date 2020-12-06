@@ -90,5 +90,27 @@ namespace Sion.CsvParse {
         public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, char delimiter, bool hasHeaders) {
             return ((hasHeaders) ? (await Parse(path, delimiter)).Skip(1) : await Parse(path, delimiter));
         }
+
+        public static IEnumerable<string> GetYValues(IEnumerable<IEnumerable<string>> dataset) {
+            List<string> yValues = new List<string>();
+            foreach(var row in dataset) {
+                List<string> rowList = row.ToList();
+                yValues.Add(rowList[^1]);
+            }
+            return yValues;
+        }
+
+        public static IEnumerable<IEnumerable<string>> GetXValues(IEnumerable<IEnumerable<string>> dataset) {
+            List<List<string>> xValues = new List<List<string>>();
+            foreach(var row in dataset) {
+                List<string> current = new List<string>();
+                List<string> rowList = row.ToList();
+                for(int i = 0; i < (rowList.Count - 1); i += 1) {
+                    current.Add(rowList[i]);
+                }
+                xValues.Add(current);
+            }
+            return xValues;
+        }
     }
 }
