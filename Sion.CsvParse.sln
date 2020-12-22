@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sion.CsvParse", "Sion.CsvParse\Sion.CsvParse.csproj", "{4328409B-0BCF-4988-B15C-3A960B6BE357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sion.CSVParse", "Sion.CsvParse\Sion.CSVParse.csproj", "{4328409B-0BCF-4988-B15C-3A960B6BE357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sion.CsvParse.Test", "Sion.CsvParse.Test\Sion.CsvParse.Test.csproj", "{FBD3CC2E-130D-4D77-9CDD-BF14640F7F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sion.CSVParse.Test", "Sion.CsvParse.Test\Sion.CSVParse.Test.csproj", "{FBD3CC2E-130D-4D77-9CDD-BF14640F7F75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

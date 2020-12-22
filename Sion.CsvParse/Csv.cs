@@ -3,8 +3,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sion.CsvParse {
-    public static class Csv {
+namespace Sion.CSVParse {
+    public static class CSV {
         public static async Task FillEmptyValues(string path, string value) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<string> newLines = new List<string>();
