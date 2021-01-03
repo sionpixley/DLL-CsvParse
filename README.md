@@ -2,6 +2,12 @@
 .NET 5 DLL that can be used to parse .csv files and return the data.
 
 ## How to use this DLL in your .NET 5 projects:
+### Using NuGet -
+1. Right click on the solution in Visual Studio.
+2. Click "Manage NuGet Packages for Solution".
+3. Search for "Sion.CSVParse" and install the latest package to the appropriate projects.
+
+### Using local folder -
 1. Download the most recent .dll file from this GitHub Repo's Releases.
 2. Move the recently downloaded "Sion.CSVParse.dll" file to a known location on your disk.
 3. In Visual Studio, with your project open, right click on "Dependencies" for the specific project you wish to install the DLL.
