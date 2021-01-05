@@ -6,6 +6,7 @@
 1. Right click on the solution in Visual Studio.
 2. Click "Manage NuGet Packages for Solution".
 3. Search for "Sion.CSVParse" and install the latest package to the appropriate projects.
+4. Make sure to add "using Sion.CSVParse;" to the top of your .cs or .vb files.
 
 ### Using a local folder -
 1. Download the most recent .dll file from this GitHub Repo's Releases.
