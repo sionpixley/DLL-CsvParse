@@ -11,6 +11,7 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/sionpixley/DLL-CSVParse</PackageProjectUrl>
+    <PackageReleaseNotes>New method: Replace.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
