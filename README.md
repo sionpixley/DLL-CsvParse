@@ -37,7 +37,8 @@ IEnumberable\<IEnumberable\<string\>\> data = await CSV.Parse("filepath.csv");
 ## What if I use a character other than ',' to delimit my .csv files?
 All the methods are overloaded to accept an optional char delimiter! If not provided, ',' is the assumed character.
 
-<br/>CSV.FillEmptyValues(string path, string value, char delimiter);<br/>
-CSV.Parse(string path, char delimiter);<br/>
+<br/>CSV.GetData(string path, char delimiter, bool hasHeaders);<br/>
 CSV.GetHeaders(string path, char delimiter);<br/>
-CSV.GetData(string path, char delimiter, bool hasHeaders);
+CSV.FillEmptyValues(string path, string value, char delimiter);<br/>
+CSV.Parse(string path, char delimiter);<br/>
+CSV.Replace(string path, string replace, string newValue, char delimiter);
