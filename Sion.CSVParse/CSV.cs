@@ -140,7 +140,10 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
         }
 
-        public static async Task Replace(string path, string replace, string newValue, char delimiter) {
+        public static async Task Replace( string path
+                                        , string replace
+                                        , string newValue
+                                        , char delimiter ) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<string> newLines = new List<string>();
 
