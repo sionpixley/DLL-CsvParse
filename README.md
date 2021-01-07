@@ -1,5 +1,5 @@
 # Sion.CSVParse
-.NET 5 DLL that can be used to parse .csv files and return the data.
+.NET 5 DLL that can be used to asynchronously parse .csv files and return the data.
 
 ## How to use this DLL in your .NET 5 projects:
 ### Using NuGet -
