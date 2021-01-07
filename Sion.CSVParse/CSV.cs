@@ -121,20 +121,28 @@ namespace Sion.CSVParse {
 
         public static async Task Replace(string path, string replace, string newValue) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
+            List<List<string>> newValues = new List<List<string>>();
             List<string> newLines = new List<string>();
 
             foreach(var line in lines) {
-                if(line.Contains(",,")) {
-                    string newLine = line;
-                    while(newLine.Contains(",,")) {
-                        int index = newLine.IndexOf(",,");
-                        newLine = $"{newLine[0..(index + 1)]}{newValue}{newLine[(index + 1)..]}";
+                newValues.Add(line.Split(',').ToList());
+            }
+
+            for(int i = 0; i < newValues.Count; i += 1) {
+                newValues[i] = newValues[i].Select(val => ((val == replace) ? newValue : val)).ToList();
+            }
+
+            foreach(var line in newValues) {
+                string newLine = "";
+                for(int i = 0; i < line.Count; i += 1) {
+                    if(i == (line.Count - 1)) {
+                        newLine += line[i];
                     }
-                    newLines.Add(newLine);
+                    else {
+                        newLine += $"{line[i]},";
+                    }
                 }
-                else {
-                    newLines.Add(line);
-                }
+                newLines.Add(newLine);
             }
 
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
@@ -145,20 +153,28 @@ namespace Sion.CSVParse {
                                         , string newValue
                                         , char delimiter ) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
+            List<List<string>> newValues = new List<List<string>>();
             List<string> newLines = new List<string>();
 
             foreach(var line in lines) {
-                if(line.Contains($"{delimiter}{delimiter}")) {
-                    string newLine = line;
-                    while(newLine.Contains($"{delimiter}{delimiter}")) {
-                        int index = newLine.IndexOf($"{delimiter}{delimiter}");
-                        newLine = $"{newLine[0..(index + 1)]}{newValue}{newLine[(index + 1)..]}";
+                newValues.Add(line.Split(delimiter).ToList());
+            }
+
+            for(int i = 0; i < newValues.Count; i += 1) {
+                newValues[i] = newValues[i].Select(val => ((val == replace) ? newValue : val)).ToList();
+            }
+
+            foreach(var line in newValues) {
+                string newLine = "";
+                for(int i = 0; i < line.Count; i += 1) {
+                    if(i == (line.Count - 1)) {
+                        newLine += line[i];
                     }
-                    newLines.Add(newLine);
+                    else {
+                        newLine += $"{line[i]}{delimiter}";
+                    }
                 }
-                else {
-                    newLines.Add(line);
-                }
+                newLines.Add(newLine);
             }
 
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
