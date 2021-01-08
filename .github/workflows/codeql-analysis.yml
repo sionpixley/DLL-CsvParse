@@ -59,9 +59,10 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    - run: |
-       dotnet restore **\*.csproj
-       dotnet build **\*.csproj --configuration release
+    - name: Build NuGet Package
+      run: |
+        dotnet restore **/*.csproj
+        dotnet build **/*.csproj --configuration release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
