@@ -201,6 +201,169 @@ namespace Sion.CSVParse {
             return yValues;
         }
 
+        public static async Task NormalizeWidth(string path, string padValue) {
+            IEnumerable<List<string>> data = (await Parse(path)).Select(row => row.ToList());
+            int max = data.Select(row => row.Count).Max();
+
+            List<List<string>> newData = new List<List<string>>();
+            List<string> dataToWrite = new List<string>();
+
+            foreach(var row in data) {
+                if(row.Count < max) {
+                    List<string> newRow = new List<string>();
+                    string y = row[^1];
+                    for(int i = 0; i < (row.Count - 1); i += 1) {
+                        newRow.Add(row[i]);
+                    }
+                    while(newRow.Count < (max - 1)) {
+                        newRow.Add(padValue);
+                    }
+                    newRow.Add(y);
+                }
+                else {
+                    newData.Add(row);
+                }
+            }
+
+            foreach(var row in newData) {
+                string line = "";
+                for(int i = 0; i < row.Count; i += 1) {
+                    if(i == (row.Count - 1)) {
+                        line += row[i];
+                    }
+                    else {
+                        line += $"{row[i]},";
+                    }
+                }
+                dataToWrite.Add(line);
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, dataToWrite, Encoding.UTF8);
+        }
+
+        public static async Task NormalizeWidth(string path, string padValue, Encoding encoding) {
+            IEnumerable<List<string>> data = (await Parse(path, encoding)).Select(row => row.ToList());
+            int max = data.Select(row => row.Count).Max();
+
+            List<List<string>> newData = new List<List<string>>();
+            List<string> dataToWrite = new List<string>();
+
+            foreach(var row in data) {
+                if(row.Count < max) {
+                    List<string> newRow = new List<string>();
+                    string y = row[^1];
+                    for(int i = 0; i < (row.Count - 1); i += 1) {
+                        newRow.Add(row[i]);
+                    }
+                    while(newRow.Count < (max - 1)) {
+                        newRow.Add(padValue);
+                    }
+                    newRow.Add(y);
+                }
+                else {
+                    newData.Add(row);
+                }
+            }
+
+            foreach(var row in newData) {
+                string line = "";
+                for(int i = 0; i < row.Count; i += 1) {
+                    if(i == (row.Count - 1)) {
+                        line += row[i];
+                    }
+                    else {
+                        line += $"{row[i]},";
+                    }
+                }
+                dataToWrite.Add(line);
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, dataToWrite, encoding);
+        }
+
+        public static async Task NormalizeWidth(string path, string padValue, char delimiter) {
+            IEnumerable<List<string>> data = (await Parse(path, delimiter)).Select(row => row.ToList());
+            int max = data.Select(row => row.Count).Max();
+
+            List<List<string>> newData = new List<List<string>>();
+            List<string> dataToWrite = new List<string>();
+
+            foreach(var row in data) {
+                if(row.Count < max) {
+                    List<string> newRow = new List<string>();
+                    string y = row[^1];
+                    for(int i = 0; i < (row.Count - 1); i += 1) {
+                        newRow.Add(row[i]);
+                    }
+                    while(newRow.Count < (max - 1)) {
+                        newRow.Add(padValue);
+                    }
+                    newRow.Add(y);
+                }
+                else {
+                    newData.Add(row);
+                }
+            }
+
+            foreach(var row in newData) {
+                string line = "";
+                for(int i = 0; i < row.Count; i += 1) {
+                    if(i == (row.Count - 1)) {
+                        line += row[i];
+                    }
+                    else {
+                        line += $"{row[i]}{delimiter}";
+                    }
+                }
+                dataToWrite.Add(line);
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, dataToWrite, Encoding.UTF8);
+        }
+
+        public static async Task NormalizeWidth( string path
+                                               , string padValue
+                                               , char delimiter
+                                               , Encoding encoding ) {
+            IEnumerable<List<string>> data = (await Parse(path, delimiter, encoding)).Select(row => row.ToList());
+            int max = data.Select(row => row.Count).Max();
+
+            List<List<string>> newData = new List<List<string>>();
+            List<string> dataToWrite = new List<string>();
+
+            foreach(var row in data) {
+                if(row.Count < max) {
+                    List<string> newRow = new List<string>();
+                    string y = row[^1];
+                    for(int i = 0; i < (row.Count - 1); i += 1) {
+                        newRow.Add(row[i]);
+                    }
+                    while(newRow.Count < (max - 1)) {
+                        newRow.Add(padValue);
+                    }
+                    newRow.Add(y);
+                }
+                else {
+                    newData.Add(row);
+                }
+            }
+
+            foreach(var row in newData) {
+                string line = "";
+                for(int i = 0; i < row.Count; i += 1) {
+                    if(i == (row.Count - 1)) {
+                        line += row[i];
+                    }
+                    else {
+                        line += $"{row[i]}{delimiter}";
+                    }
+                }
+                dataToWrite.Add(line);
+            }
+
+            await System.IO.File.WriteAllLinesAsync(path, dataToWrite, encoding);
+        }
+
         public static async Task<IEnumerable<IEnumerable<string>>> Parse(string path) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<IEnumerable<string>> data = new List<IEnumerable<string>>();
