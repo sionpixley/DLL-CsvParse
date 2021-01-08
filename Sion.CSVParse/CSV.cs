@@ -59,7 +59,7 @@ namespace Sion.CSVParse {
             return ((hasHeaders) ? (await Parse(path)).Skip(1) : await Parse(path));
         }
 
-        public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, char delimiter, bool hasHeaders) {
+        public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, bool hasHeaders, char delimiter) {
             return ((hasHeaders) ? (await Parse(path, delimiter)).Skip(1) : await Parse(path, delimiter));
         }
 
