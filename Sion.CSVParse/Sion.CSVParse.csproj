@@ -12,10 +12,15 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/sionpixley/DLL-CSVParse</PackageProjectUrl>
     <PackageReleaseNotes>New method: Replace.</PackageReleaseNotes>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
