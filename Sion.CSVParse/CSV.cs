@@ -1,10 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sion.CSVParse {
     public static class CSV {
+        public static async Task ConvertToJSON(string path, string jsonPath) {
+            IEnumerable<IEnumerable<string>> data = await Parse(path);
+            string json = JsonConvert.SerializeObject(data);
+            await System.IO.File.WriteAllTextAsync(jsonPath, json, Encoding.UTF8);
+        }
+
+        public static async Task ConvertToJSON(string path, string jsonPath, Encoding encoding) {
+            IEnumerable<IEnumerable<string>> data = await Parse(path, encoding);
+            string json = JsonConvert.SerializeObject(data);
+            await System.IO.File.WriteAllTextAsync(jsonPath, json, encoding);
+        }
+
+        public static async Task ConvertToJSON(string path, string jsonPath, char delimiter) {
+            IEnumerable<IEnumerable<string>> data = await Parse(path, delimiter);
+            string json = JsonConvert.SerializeObject(data);
+            await System.IO.File.WriteAllTextAsync(jsonPath, json, Encoding.UTF8);
+        }
+
+        public static async Task ConvertToJSON( string path
+                                              , string jsonPath
+                                              , char delimiter
+                                              , Encoding encoding ) {
+            IEnumerable<IEnumerable<string>> data = await Parse(path, delimiter, encoding);
+            string json = JsonConvert.SerializeObject(data);
+            await System.IO.File.WriteAllTextAsync(jsonPath, json, encoding);
+        }
+
         public static async Task FillEmptyValues(string path, string value) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<string> newLines = new List<string>();
@@ -310,7 +338,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
         }
 
-        public static async Task Replace(string path
+        public static async Task Replace( string path
                                         , string replace
                                         , string newValue
                                         , char delimiter
