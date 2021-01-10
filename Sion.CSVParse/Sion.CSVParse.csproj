@@ -10,9 +10,25 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/sionpixley/DLL-CSVParse</PackageProjectUrl>
-    <PackageReleaseNotes>New method: Replace.</PackageReleaseNotes>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageReleaseNotes>Major update!
+
+==============================================
+
+New methods:
+ConvertToJSON
+NormalizeWidth
+
+==============================================
+
+Methods now accept an optional Encoding parameter. 
+
+==============================================
+
+Please read the documentation.</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/sionpixley/DLL-CSVParse</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
