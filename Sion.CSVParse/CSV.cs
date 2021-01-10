@@ -24,10 +24,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllTextAsync(jsonPath, json, Encoding.UTF8);
         }
 
-        public static async Task ConvertToJSON( string path
-                                              , string jsonPath
-                                              , char delimiter
-                                              , Encoding encoding ) {
+        public static async Task ConvertToJSON(string path, string jsonPath, char delimiter, Encoding encoding) {
             IEnumerable<IEnumerable<string>> data = await Parse(path, delimiter, encoding);
             string json = JsonConvert.SerializeObject(data);
             await System.IO.File.WriteAllTextAsync(jsonPath, json, encoding);
@@ -96,10 +93,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
         }
 
-        public static async Task FillEmptyValues( string path
-                                                , string value
-                                                , char delimiter
-                                                , Encoding encoding ) {
+        public static async Task FillEmptyValues(string path, string value, char delimiter, Encoding encoding) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, encoding);
             List<string> newLines = new List<string>();
 
@@ -148,10 +142,7 @@ namespace Sion.CSVParse {
             return ((hasHeaders) ? (await Parse(path, delimiter)).Skip(1) : await Parse(path, delimiter));
         }
 
-        public static async Task<IEnumerable<IEnumerable<string>>> GetData( string path
-                                                                          , bool hasHeaders
-                                                                          , char delimiter
-                                                                          , Encoding encoding ) {
+        public static async Task<IEnumerable<IEnumerable<string>>> GetData(string path, bool hasHeaders, char delimiter, Encoding encoding) {
             return ((hasHeaders) ? (await Parse(path, delimiter, encoding)).Skip(1) : await Parse(path, delimiter, encoding));
         }
 
@@ -321,10 +312,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, dataToWrite, Encoding.UTF8);
         }
 
-        public static async Task NormalizeWidth( string path
-                                               , string padValue
-                                               , char delimiter
-                                               , Encoding encoding ) {
+        public static async Task NormalizeWidth(string path, string padValue, char delimiter, Encoding encoding) {
             IEnumerable<List<string>> data = (await Parse(path, delimiter, encoding)).Select(row => row.ToList());
             int max = data.Select(row => row.Count).Max();
 
@@ -437,10 +425,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
         }
 
-        public static async Task Replace( string path
-                                        , string replace
-                                        , string newValue
-                                        , Encoding encoding ) {
+        public static async Task Replace(string path, string replace, string newValue, Encoding encoding) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, encoding);
             List<List<string>> newValues = new List<List<string>>();
             List<string> newLines = new List<string>();
@@ -469,10 +454,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, encoding);
         }
 
-        public static async Task Replace( string path
-                                        , string replace
-                                        , string newValue
-                                        , char delimiter ) {
+        public static async Task Replace(string path, string replace, string newValue, char delimiter) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, Encoding.UTF8);
             List<List<string>> newValues = new List<List<string>>();
             List<string> newLines = new List<string>();
@@ -501,11 +483,7 @@ namespace Sion.CSVParse {
             await System.IO.File.WriteAllLinesAsync(path, newLines, Encoding.UTF8);
         }
 
-        public static async Task Replace( string path
-                                        , string replace
-                                        , string newValue
-                                        , char delimiter
-                                        , Encoding encoding ) {
+        public static async Task Replace(string path, string replace, string newValue, char delimiter, Encoding encoding) {
             IEnumerable<string> lines = await System.IO.File.ReadAllLinesAsync(path, encoding);
             List<List<string>> newValues = new List<List<string>>();
             List<string> newLines = new List<string>();
