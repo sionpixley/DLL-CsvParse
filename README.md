@@ -47,11 +47,11 @@ IEnumberable\<string\> headers = await CSV.GetHeaders("filepath.csv");
 
 ## How to grab just the x values from my data:
 
-IEnumerable\<IEnumerable\<string\>\> xValues = CSV.GetXValues(IEnumerable\<IEnumerable\<string\>\> dataset);
+IEnumerable\<IEnumerable\<string\>\> xValues = CSV.GetXValues(data);
 
 ## How to grab just the y values from my data:
 
-IEnumerable\<string\> yValues = CSV.GetYValues(IEnumerable\<IEnumerable\<string\>\> dataset);
+IEnumerable\<string\> yValues = CSV.GetYValues(data);
 
 ## How to normalize the width of all rows (this overwrites your .csv file):
 
